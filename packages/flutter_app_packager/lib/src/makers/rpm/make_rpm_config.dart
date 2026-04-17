@@ -127,10 +127,10 @@ class MakeRPMConfig extends MakeConfig {
             'mkdir -p %{buildroot}%{_datadir}/%{name}',
             'mkdir -p %{buildroot}%{_datadir}/applications',
             'mkdir -p %{buildroot}%{_datadir}/pixmaps',
-            'cp -r %{name}/* %{buildroot}%{_datadir}/%{name}',
+            'cp -r %{_topdir}/BUILD/%{name}/* %{buildroot}%{_datadir}/%{name}',
             'ln -s %{_datadir}/%{name}/%{name} %{buildroot}%{_bindir}/%{name}',
-            'cp -r %{name}.desktop %{buildroot}%{_datadir}/applications',
-            'cp -r %{name}.png %{buildroot}%{_datadir}/pixmaps',
+            'cp -r %{_topdir}/BUILD/%{name}.desktop %{buildroot}%{_datadir}/applications',
+            'cp -r %{_topdir}/BUILD/%{name}.png %{buildroot}%{_datadir}/pixmaps',
             'update-mime-database %{_datadir}/mime &> /dev/null || :',
           ].join('\n'),
           '%postun': ['update-mime-database %{_datadir}/mime &> /dev/null || :']
