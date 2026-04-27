@@ -22,6 +22,8 @@ class AppPackageMakerApk extends AppPackageMaker {
         final lastPart = outputPath.substring(lastDotIndex + 1);
         final output = '$firstPart-${sublist.join('-')}.${lastPart}';
         file.copySync(output);
+      } else {
+        file.copySync(config.outputFile.path);
       }
     }
     return Future.value(resultResolver.resolve(config));
